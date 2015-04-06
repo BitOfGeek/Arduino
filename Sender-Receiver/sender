@@ -1,0 +1,30 @@
+int LED1=13;
+unsigned int time=0;
+void setup() {
+Serial.begin(9600);
+pinMode(LED1, OUTPUT);
+}
+
+void loop() {
+ 
+if (Serial.read()== '.'){
+  time=millis();
+  digitalWrite(LED1, HIGH);
+  if (millis()-time==100){
+  digitalWrite(LED1, LOW);
+  delay(100);
+  }
+}
+if (Serial.read()== '-'){
+  time=millis();
+  digitalWrite(LED1, HIGH);
+  if (millis()-time==300){
+  digitalWrite(LED1, LOW);
+  delay(300);
+  }
+}
+if (Serial.read()== ' '){
+  digitalWrite(LED1, LOW); 
+  delay(300);
+}
+}
