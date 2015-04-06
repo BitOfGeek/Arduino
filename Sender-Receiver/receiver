@@ -1,0 +1,35 @@
+int photocell=13;
+unsigned int time=0;
+unsigned int value=0;
+void setup() {
+  
+Serial.begin(9600);
+pinMode(photocell, INPUT);
+}
+
+void loop() {
+ value=analogRead(photocell);
+ time=millis();
+ if (value>100){
+   if (millis()-time==100){
+     time=millis();
+     if(value<100){
+        if (millis()-time==100){
+           Serial.println(".");
+         }
+   }
+ }
+ if (millis()-time==300){
+     time=millis();
+     if(value<100){
+        if (millis()-time==300){
+           Serial.println("-");
+         }
+   }
+ }
+}
+if (value<100){
+  if(millis()-time==100)
+  Serial.println(" ");
+}
+}
