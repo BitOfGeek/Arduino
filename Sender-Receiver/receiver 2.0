@@ -1,0 +1,30 @@
+int photocell=13;
+unsigned int interval=0;
+unsigned int time=0;
+unsigned int value=0;
+unsigned char state=false;
+
+void setup() { 
+Serial.begin(9600);
+pinMode(photocell, INPUT);
+}
+
+void loop() {
+ value=analogRead(photocell);
+ time=millis();
+ if(value>800){state==true;}
+ if(value > 800 && state == false)
+ {
+   time = millis();
+   state = true;
+ }
+ else if(value < 750 && state == true)
+ {
+   interval = millis() - time;
+   state = false;
+   //Serial.println(interval);
+   if(interval > 70 && interval < 180) Serial.print('.');
+   if(interval > 240 && interval < 370) Serial.print("-");
+   time = millis();
+ }
+}
