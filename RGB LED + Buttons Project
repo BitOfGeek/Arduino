@@ -1,0 +1,344 @@
+int redLEDPin = 13;
+int greenLEDPin = 11;
+int blueLEDPin = 10;
+ 
+int redLEDPin2 = 7;
+int greenLEDPin2 = 8;
+int blueLEDPin2 = 9; 
+ 
+int redLEDPin3 = 4;
+int greenLEDPin3 = 5;
+int blueLEDPin3 = 6; 
+ 
+int SwitchPin = A0;
+int SwitchPin2 = A1;
+int SwitchPin3= A2;
+int masterSwitch=A3;
+
+int count=0;
+int count2=0;
+int count3=0;
+int state= false;
+
+int red = 255;
+int blue = 255;
+int green = 255;
+ 
+void setup(){
+  Serial.begin(9600);
+  Serial.flush();
+  pinMode(redLEDPin, OUTPUT);
+  pinMode(greenLEDPin, OUTPUT);
+  pinMode(blueLEDPin, OUTPUT); 
+  pinMode(redLEDPin2, OUTPUT);
+  pinMode(greenLEDPin2, OUTPUT);
+  pinMode(blueLEDPin2, OUTPUT); 
+  pinMode(redLEDPin3, OUTPUT);
+  pinMode(greenLEDPin3, OUTPUT);
+  pinMode(blueLEDPin3, OUTPUT);  
+  pinMode(SwitchPin, INPUT_PULLUP);
+  pinMode(SwitchPin2, INPUT_PULLUP);
+  pinMode(SwitchPin3, INPUT_PULLUP);
+  pinMode(masterSwitch, INPUT_PULLUP);
+  analogWrite(redLEDPin, 255);
+  analogWrite(greenLEDPin, 255);
+  analogWrite(blueLEDPin, 255);  
+  analogWrite(redLEDPin2, 255);
+  analogWrite(greenLEDPin2, 255);
+  analogWrite(blueLEDPin2, 255);  
+  analogWrite(redLEDPin3, 255);
+  analogWrite(greenLEDPin3, 255);
+  analogWrite(blueLEDPin3, 255);  
+}
+ 
+void loop(){
+  //LED1
+  if (digitalRead(SwitchPin) == LOW){
+    count++;
+  }
+  if (count==1){
+  analogWrite(redLEDPin, 1);
+  analogWrite(greenLEDPin, 1);
+  analogWrite(blueLEDPin, 1);  
+  }
+  if (count==2){
+  analogWrite(redLEDPin, 1);
+  analogWrite(greenLEDPin, 255);
+  analogWrite(blueLEDPin, 255);  
+  }
+  if (count==3){
+    analogWrite(redLEDPin, 1);
+  analogWrite(greenLEDPin, 1);
+  analogWrite(blueLEDPin, 255);  
+  }
+  if (count==4){
+   analogWrite(redLEDPin, 255);
+  analogWrite(greenLEDPin, 0);
+  analogWrite(blueLEDPin, 255);  
+  }
+  if (count==5){
+    analogWrite(redLEDPin, 255);
+  analogWrite(greenLEDPin, 1);
+  analogWrite(blueLEDPin, 1);  
+  }
+  if (count==6){
+    analogWrite(redLEDPin, 255);
+  analogWrite(greenLEDPin, 255);
+  analogWrite(blueLEDPin, 1);  
+  }
+  if (count==7){
+    analogWrite(redLEDPin, 1);
+  analogWrite(greenLEDPin, 255);
+  analogWrite(blueLEDPin, 1);  
+  }
+  if (count==8){
+   
+    count=0;
+    analogWrite(redLEDPin, 255);
+  analogWrite(greenLEDPin, 255);
+  analogWrite(blueLEDPin, 255);  
+  } 
+  delay(10);
+String input = "";
+while (Serial.available()){
+input += (char) Serial.read(); 
+}
+if (input == "turn led one on") {
+  analogWrite(redLEDPin, 1);
+  analogWrite(greenLEDPin, 1);
+  analogWrite(blueLEDPin, 1);  
+}
+if (input == "turn led one red"){
+  analogWrite(redLEDPin, 1);
+  analogWrite(greenLEDPin, 255);
+  analogWrite(blueLEDPin, 255);  
+}
+if (input == "turn led one green"){
+  analogWrite(redLEDPin, 255);
+  analogWrite(greenLEDPin, 1);
+  analogWrite(blueLEDPin, 255);  
+}
+if (input == "turn led one blue"){
+  analogWrite(redLEDPin, 255);
+  analogWrite(greenLEDPin, 255);
+  analogWrite(blueLEDPin, 1);  
+}
+if (input == "turn led one purple"){
+  analogWrite(redLEDPin, 1);
+  analogWrite(greenLEDPin, 255);
+  analogWrite(blueLEDPin, 1);  
+}
+if (input == "turn led one yellow"){
+  analogWrite(redLEDPin, 1);
+  analogWrite(greenLEDPin, 255);
+  analogWrite(blueLEDPin, 255);  
+}
+if (input == "turn led one aqua"){
+  analogWrite(redLEDPin, 255);
+  analogWrite(greenLEDPin, 1);
+  analogWrite(blueLEDPin, 1);  
+}
+if (input == "turn led one off"){
+  analogWrite(redLEDPin, 255);
+  analogWrite(greenLEDPin, 255);
+  analogWrite(blueLEDPin, 255);  
+}
+  //LED2
+  if (digitalRead(SwitchPin2) == LOW){
+    count2++;
+  }
+  if (count2==1){
+  analogWrite(redLEDPin2, 1);
+  analogWrite(greenLEDPin2, 1);
+  analogWrite(blueLEDPin2, 1);  
+  }
+  if (count2==2){
+  analogWrite(redLEDPin2, 1);
+  analogWrite(greenLEDPin2, 255);
+  analogWrite(blueLEDPin2, 255);  
+  }
+  if (count2==3){
+    analogWrite(redLEDPin2, 1);
+  analogWrite(greenLEDPin2, 1);
+  analogWrite(blueLEDPin2, 255);  
+  }
+  if (count2==4){
+   analogWrite(redLEDPin2, 255);
+  analogWrite(greenLEDPin2, 0);
+  analogWrite(blueLEDPin2, 255);  
+  }
+  if (count2==5){
+    analogWrite(redLEDPin2, 255);
+  analogWrite(greenLEDPin2, 1);
+  analogWrite(blueLEDPin2, 1);  
+  }
+  if (count2==6){
+    analogWrite(redLEDPin2, 255);
+  analogWrite(greenLEDPin2, 255);
+  analogWrite(blueLEDPin2, 1);  
+  }
+  if (count2==7){
+    analogWrite(redLEDPin2, 1);
+  analogWrite(greenLEDPin2, 255);
+  analogWrite(blueLEDPin2, 1);  
+  }
+  if (count2==8){
+   
+    count2=0;
+    analogWrite(redLEDPin2, 255);
+  analogWrite(greenLEDPin2, 255);
+  analogWrite(blueLEDPin2, 255);  
+  } 
+  if (input == "turn led two on") {
+  analogWrite(redLEDPin2, 1);
+  analogWrite(greenLEDPin2, 1);
+  analogWrite(blueLEDPin2, 1);  
+}
+if (input == "turn led two red"){
+  analogWrite(redLEDPin2, 1);
+  analogWrite(greenLEDPin2, 255);
+  analogWrite(blueLEDPin2, 255);  
+}
+if (input == "turn led two green"){
+  analogWrite(redLEDPin2, 255);
+  analogWrite(greenLEDPin2, 1);
+  analogWrite(blueLEDPin2, 255);  
+}
+if (input == "turn led two blue"){
+  analogWrite(redLEDPin2, 255);
+  analogWrite(greenLEDPin2, 255);
+  analogWrite(blueLEDPin2, 1);  
+}
+if (input == "turn led two purple"){
+  analogWrite(redLEDPin2, 1);
+  analogWrite(greenLEDPin2, 255);
+  analogWrite(blueLEDPin2, 1);  
+}
+if (input == "turn led two yellow"){
+  analogWrite(redLEDPin2, 1);
+  analogWrite(greenLEDPin2, 255);
+  analogWrite(blueLEDPin2, 255);  
+}
+if (input == "turn led two aqua"){
+  analogWrite(redLEDPin2, 255);
+  analogWrite(greenLEDPin2, 1);
+  analogWrite(blueLEDPin2, 1);  
+}
+if (input == "turn led two off"){
+  analogWrite(redLEDPin2, 255);
+  analogWrite(greenLEDPin2, 255);
+  analogWrite(blueLEDPin2, 255);  
+}
+  //LED3
+  if (digitalRead(SwitchPin3) == LOW){
+    count3++;
+  }
+  if (count3==1){
+  analogWrite(redLEDPin3, 1);
+  analogWrite(greenLEDPin3, 1);
+  analogWrite(blueLEDPin3, 1);  
+  }
+  if (count3==2){
+  analogWrite(redLEDPin3, 1);
+  analogWrite(greenLEDPin3, 255);
+  analogWrite(blueLEDPin3, 255);  
+  }
+  if (count3==3){
+    analogWrite(redLEDPin3, 1);
+  analogWrite(greenLEDPin3, 1);
+  analogWrite(blueLEDPin3, 255);  
+  }
+  if (count3==4){
+   analogWrite(redLEDPin3, 255);
+  analogWrite(greenLEDPin3, 0);
+  analogWrite(blueLEDPin3, 255);  
+  }
+  if (count3==5){
+    analogWrite(redLEDPin3, 255);
+  analogWrite(greenLEDPin3, 1);
+  analogWrite(blueLEDPin3, 1);  
+  }
+  if (count3==6){
+    analogWrite(redLEDPin3, 255);
+  analogWrite(greenLEDPin3, 255);
+  analogWrite(blueLEDPin3, 1);  
+  }
+  if (count3==7){
+    analogWrite(redLEDPin3, 1);
+  analogWrite(greenLEDPin3, 255);
+  analogWrite(blueLEDPin3, 1);  
+  }
+  if (count3==8){
+   
+    count3=0;
+    analogWrite(redLEDPin3, 255);
+  analogWrite(greenLEDPin3, 255);
+  analogWrite(blueLEDPin3, 255);  
+  } 
+  if (input == "turn led three on") {
+  analogWrite(redLEDPin3, 1);
+  analogWrite(greenLEDPin3, 1);
+  analogWrite(blueLEDPin3, 1);  
+}
+if (input == "turn led three red"){
+  analogWrite(redLEDPin3, 1);
+  analogWrite(greenLEDPin3, 255);
+  analogWrite(blueLEDPin3, 255);  
+}
+if (input == "turn led three green"){
+  analogWrite(redLEDPin3, 255);
+  analogWrite(greenLEDPin3, 1);
+  analogWrite(blueLEDPin3, 255);  
+}
+if (input == "turn led three blue"){
+  analogWrite(redLEDPin3, 255);
+  analogWrite(greenLEDPin3, 255);
+  analogWrite(blueLEDPin3, 1);  
+}
+if (input == "turn led three purple"){
+  analogWrite(redLEDPin3, 1);
+  analogWrite(greenLEDPin3, 255);
+  analogWrite(blueLEDPin3, 1);  
+}
+if (input == "turn led three yellow"){
+  analogWrite(redLEDPin3, 1);
+  analogWrite(greenLEDPin3, 255);
+  analogWrite(blueLEDPin3, 255);  
+}
+if (input == "turn led three aqua"){
+  analogWrite(redLEDPin3, 255);
+  analogWrite(greenLEDPin3, 1);
+  analogWrite(blueLEDPin3, 1);  
+}
+if (input == "turn led three off"){
+  analogWrite(redLEDPin3, 255);
+  analogWrite(greenLEDPin3, 255);
+  analogWrite(blueLEDPin3, 255);  
+}
+  //masterSwitch
+   if (digitalRead(masterSwitch) == LOW && state== false){
+     state=true;
+     analogWrite(redLEDPin, 1);
+     analogWrite(greenLEDPin, 1);
+     analogWrite(blueLEDPin, 1);  
+    analogWrite(redLEDPin2, 1);
+    analogWrite(greenLEDPin2, 1);
+    analogWrite(blueLEDPin2, 1);  
+   analogWrite(redLEDPin3, 1);
+   analogWrite(greenLEDPin3, 1);
+   analogWrite(blueLEDPin3, 1);  
+   }
+   if (digitalRead(masterSwitch) == LOW && state== true){
+     state=false;
+     analogWrite(redLEDPin, 255);
+  analogWrite(greenLEDPin, 255);
+  analogWrite(blueLEDPin, 255);  
+      analogWrite(redLEDPin2, 255);
+  analogWrite(greenLEDPin2, 255);
+  analogWrite(blueLEDPin2, 255);  
+     analogWrite(redLEDPin3, 255);
+  analogWrite(greenLEDPin3, 255);
+  analogWrite(blueLEDPin3, 255);  
+   }
+   delay(10); 
+}
